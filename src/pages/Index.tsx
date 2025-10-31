@@ -7,6 +7,13 @@ import Icon from '@/components/ui/icon';
 const Index = () => {
   const [hotlineOpen, setHotlineOpen] = useState(false);
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  };
+
   const signs = [
     {
       icon: 'UserX',
@@ -97,19 +104,71 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
-        <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Icon name="Shield" className="text-primary" size={32} />
-            <h1 className="text-2xl md:text-3xl font-bold text-primary">Защита достоинства</h1>
+        <div className="container mx-auto px-4 py-4">
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center gap-3">
+              <Icon name="Shield" className="text-primary" size={32} />
+              <h1 className="text-2xl md:text-3xl font-bold text-primary">Защита достоинства</h1>
+            </div>
+            <Button 
+              onClick={() => setHotlineOpen(!hotlineOpen)}
+              size="lg"
+              className="text-lg font-medium"
+            >
+              <Icon name="Phone" className="mr-2" size={20} />
+              Горячая линия
+            </Button>
           </div>
-          <Button 
-            onClick={() => setHotlineOpen(!hotlineOpen)}
-            size="lg"
-            className="text-lg font-medium"
-          >
-            <Icon name="Phone" className="mr-2" size={20} />
-            Горячая линия
-          </Button>
+          <nav className="hidden md:flex gap-3 justify-center flex-wrap">
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('signs')}
+              className="text-base"
+            >
+              <Icon name="AlertCircle" className="mr-2" size={18} />
+              Признаки
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('help')}
+              className="text-base"
+            >
+              <Icon name="LifeBuoy" className="mr-2" size={18} />
+              Помощь
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('videos')}
+              className="text-base"
+            >
+              <Icon name="Video" className="mr-2" size={18} />
+              Видео
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('stories')}
+              className="text-base"
+            >
+              <Icon name="BookOpen" className="mr-2" size={18} />
+              Истории
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('resources')}
+              className="text-base"
+            >
+              <Icon name="BookMarked" className="mr-2" size={18} />
+              Ресурсы
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('contact')}
+              className="text-base"
+            >
+              <Icon name="MessageSquare" className="mr-2" size={18} />
+              Контакты
+            </Button>
+          </nav>
         </div>
       </header>
 
@@ -135,11 +194,20 @@ const Index = () => {
             Мы здесь, чтобы помочь распознать признаки и получить поддержку.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
-            <Button size="lg" className="text-lg px-8 py-6">
+            <Button 
+              size="lg" 
+              className="text-lg px-8 py-6"
+              onClick={() => scrollToSection('signs')}
+            >
               <Icon name="AlertCircle" className="mr-2" size={22} />
               Признаки насилия
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8 py-6">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8 py-6"
+              onClick={() => scrollToSection('help')}
+            >
               <Icon name="Info" className="mr-2" size={22} />
               Получить помощь
             </Button>
