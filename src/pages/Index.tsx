@@ -63,6 +63,37 @@ const Index = () => {
     { name: 'Психологическая поддержка', contact: '8-800-333-44-34', icon: 'MessageCircle' }
   ];
 
+  const videos = [
+    {
+      title: 'Как распознать признаки жестокого обращения',
+      description: 'Основные индикаторы, на которые важно обратить внимание',
+      duration: '5:30',
+      thumbnail: 'https://images.unsplash.com/photo-1581579438747-1dc8d17bbce4?w=800&q=80',
+      videoId: 'dQw4w9WgXcQ'
+    },
+    {
+      title: 'Первые шаги при обнаружении проблемы',
+      description: 'Пошаговая инструкция действий для помощи близкому человеку',
+      duration: '7:15',
+      thumbnail: 'https://images.unsplash.com/photo-1516574187841-cb9cc2ca948b?w=800&q=80',
+      videoId: 'dQw4w9WgXcQ'
+    },
+    {
+      title: 'Правовая защита пожилых людей',
+      description: 'Какие законы защищают права старшего поколения',
+      duration: '6:45',
+      thumbnail: 'https://images.unsplash.com/photo-1589829545856-d10d557cf95f?w=800&q=80',
+      videoId: 'dQw4w9WgXcQ'
+    },
+    {
+      title: 'Психологическая поддержка для пострадавших',
+      description: 'Как помочь восстановиться после пережитого',
+      duration: '8:20',
+      thumbnail: 'https://images.unsplash.com/photo-1573497491208-6b1acb260507?w=800&q=80',
+      videoId: 'dQw4w9WgXcQ'
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20">
       <header className="sticky top-0 z-50 bg-white/95 backdrop-blur-sm shadow-sm">
@@ -172,6 +203,46 @@ const Index = () => {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section id="videos" className="space-y-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Видео-инструкции</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Наглядные руководства для понимания проблемы и способов помощи
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {videos.map((video, index) => (
+              <Card 
+                key={index} 
+                className="overflow-hidden hover:shadow-xl transition-all duration-300 hover:-translate-y-1 animate-scale-in group"
+                style={{ animationDelay: `${index * 100}ms` }}
+              >
+                <div className="relative aspect-video overflow-hidden bg-muted">
+                  <img 
+                    src={video.thumbnail} 
+                    alt={video.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-center justify-center group-hover:bg-black/50 transition-colors">
+                    <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon name="Play" size={32} className="text-primary-foreground ml-1" />
+                    </div>
+                  </div>
+                  <div className="absolute bottom-3 right-3 bg-black/70 text-white px-3 py-1 rounded text-sm font-medium">
+                    {video.duration}
+                  </div>
+                </div>
+                <CardHeader>
+                  <CardTitle className="text-xl">{video.title}</CardTitle>
+                  <CardDescription className="text-base">
+                    {video.description}
+                  </CardDescription>
+                </CardHeader>
+              </Card>
+            ))}
           </div>
         </section>
 
