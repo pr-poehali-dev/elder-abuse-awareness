@@ -65,7 +65,7 @@ const Index = () => {
 
   const resources = [
     { name: 'Горячая линия помощи', contact: '8-800-2000-122', icon: 'Phone' },
-    { name: 'Социальная защита', contact: 'Департамент соцзащиты вашего города', icon: 'Building2' },
+    { name: 'Социальная защита', contact: 'Социальная защита вашего города', icon: 'Building2' },
     { name: 'Правовая помощь', contact: 'Бесплатная юридическая консультация', icon: 'Scale' },
     { name: 'Психологическая поддержка', contact: '8-800-333-44-34', icon: 'MessageCircle' }
   ];
