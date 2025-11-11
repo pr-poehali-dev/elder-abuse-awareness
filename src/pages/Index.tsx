@@ -3,6 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Icon from '@/components/ui/icon';
+import Survey from '@/components/Survey';
 
 const Index = () => {
   const [hotlineOpen, setHotlineOpen] = useState(false);
@@ -178,6 +179,14 @@ const Index = () => {
             >
               <Icon name="BookMarked" className="mr-2" size={18} />
               Ресурсы
+            </Button>
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('survey')}
+              className="text-base"
+            >
+              <Icon name="ClipboardList" className="mr-2" size={18} />
+              Анкета
             </Button>
             <Button 
               variant="ghost" 
@@ -388,6 +397,16 @@ const Index = () => {
               ))}
             </Accordion>
           </div>
+        </section>
+
+        <section id="survey" className="space-y-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Анкета</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Поделитесь вашим мнением о проблеме жестокого обращения с пожилыми людьми. Ваши ответы помогут улучшить систему защиты.
+            </p>
+          </div>
+          <Survey />
         </section>
 
         <section id="contact" className="text-center max-w-3xl mx-auto space-y-8 py-12">
