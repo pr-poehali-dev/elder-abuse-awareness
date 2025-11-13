@@ -98,9 +98,12 @@ const Survey = () => {
   };
 
   const handleNext = async () => {
+    console.log('handleNext вызван. currentQuestion:', currentQuestion, 'всего вопросов:', questions.length);
     if (currentQuestion < questions.length - 1) {
+      console.log('Переход к следующему вопросу');
       setCurrentQuestion(currentQuestion + 1);
     } else {
+      console.log('Последний вопрос - отправка анкеты');
       setIsSending(true);
       console.log('Отправка анкеты:', answers);
       try {
