@@ -88,18 +88,34 @@ def handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     html_part = MIMEText(email_body, 'html', 'utf-8')
     msg.attach(html_part)
     
-    server = smtplib.SMTP(smtp_host, smtp_port)
-    server.starttls()
-    server.login(smtp_user, smtp_password)
-    server.send_message(msg)
-    server.quit()
-    
-    return {
-        'statusCode': 200,
-        'headers': {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
-        },
-        'isBase64Encoded': False,
-        'body': json.dumps({'success': True, 'message': 'Email sent successfully'})
-    }
+    try:
+        print(f'Connecting to {smtp_host}:{smtp_port}')
+        server = smtplib.SMTP(smtp_host, smtp_port)
+        server.starttls()
+        print(f'Logging in as {smtp_user}')
+        server.login(smtp_user, smtp_password)
+        print(f'Sending email to {email_to}')
+        server.send_message(msg)
+        server.quit()
+        print('Email sent successfully')
+        
+        return {
+            'statusCode': 200,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'isBase64Encoded': False,
+            'body': json.dumps({'success': True, 'message': 'Email sent successfully'})
+        }
+    except Exception as e:
+        print(f'Error sending email: {str(e)}')
+        return {
+            'statusCode': 500,
+            'headers': {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*'
+            },
+            'isBase64Encoded': False,
+            'body': json.dumps({'success': False, 'error': str(e)})
+        }
