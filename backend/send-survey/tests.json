@@ -1,0 +1,35 @@
+{
+  "tests": [
+    {
+      "name": "Handle OPTIONS request",
+      "method": "OPTIONS",
+      "path": "/",
+      "expectedStatus": 200,
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Send survey results",
+      "method": "POST",
+      "path": "/",
+      "body": {
+        "answers": {
+          "q1": "Да",
+          "q2": "Психологическое насилие",
+          "q3": "Да",
+          "q4": "Нет",
+          "q5": "Удовлетворительно",
+          "q6": "Нет",
+          "q7": "Больше информации",
+          "q8": "Да",
+          "q9": "35-44",
+          "q10": "Мужской"
+        }
+      },
+      "expectedStatus": 200,
+      "expectedBody": {
+        "success": true
+      },
+      "bodyMatcher": "partial"
+    }
+  ]
+}

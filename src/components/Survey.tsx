@@ -91,16 +91,39 @@ const Survey = () => {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [surveyCompleted, setSurveyCompleted] = useState(false);
+  const [isSending, setIsSending] = useState(false);
+  const [isSending, setIsSending] = useState(false);
 
   const handleAnswerChange = (questionId: string, value: string) => {
     setAnswers({ ...answers, [questionId]: value });
   };
 
-  const handleNext = () => {
+  const handleNext = async () => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      setSurveyCompleted(true);
+      setIsSending(true);
+      try {
+        const response = await fetch('https://functions.poehali.dev/a3414cd7-151c-4991-99f9-d97ba3786273', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ answers })
+        });
+        
+        if (response.ok) {
+          setSurveyCompleted(true);
+        } else {
+          console.error('Failed to send survey');
+          setSurveyCompleted(true);
+        }
+      } catch (error) {
+        console.error('Error sending survey:', error);
+        setSurveyCompleted(true);
+      } finally {
+        setIsSending(false);
+      }
     }
   };
 
@@ -233,11 +256,25 @@ const Survey = () => {
           <Button
             onClick={handleNext}
             size="lg"
-            disabled={question.type === 'radio' && !isCurrentAnswered()}
+            disabled={(question.type === 'radio' && !isCurrentAnswered()) || isSending}
             className="flex-1"
           >
-            {currentQuestion < questions.length - 1 ? 'Далее' : 'Отправить'}
-            <Icon name="ArrowRight" className="ml-2" size={20} />
+            {isSending ? (
+              <>
+                <Icon name="Loader2" className="mr-2 animate-spin" size={20} />
+                Отправка...
+              </>
+            ) : currentQuestion === questions.length - 1 ? (
+              <>
+                <Icon name="Send" className="mr-2" size={20} />
+                Отправить
+              </>
+            ) : (
+              <>
+                Далее
+                <Icon name="ArrowRight" className="ml-2" size={20} />
+              </>
+            )}
           </Button>
         </div>
 
