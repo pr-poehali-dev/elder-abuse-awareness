@@ -92,7 +92,6 @@ const Survey = () => {
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [surveyCompleted, setSurveyCompleted] = useState(false);
   const [isSending, setIsSending] = useState(false);
-  const [isSending, setIsSending] = useState(false);
 
   const handleAnswerChange = (questionId: string, value: string) => {
     setAnswers({ ...answers, [questionId]: value });
