@@ -102,6 +102,7 @@ const Survey = () => {
       setCurrentQuestion(currentQuestion + 1);
     } else {
       setIsSending(true);
+      console.log('Отправка анкеты:', answers);
       try {
         const response = await fetch('https://functions.poehali.dev/a3414cd7-151c-4991-99f9-d97ba3786273', {
           method: 'POST',
@@ -111,14 +112,20 @@ const Survey = () => {
           body: JSON.stringify({ answers })
         });
         
+        console.log('Статус ответа:', response.status);
+        const data = await response.json();
+        console.log('Ответ сервера:', data);
+        
         if (response.ok) {
           setSurveyCompleted(true);
         } else {
-          console.error('Failed to send survey');
+          console.error('Ошибка отправки:', data);
+          alert('Ошибка отправки: ' + (data.error || 'Неизвестная ошибка'));
           setSurveyCompleted(true);
         }
       } catch (error) {
-        console.error('Error sending survey:', error);
+        console.error('Ошибка сети:', error);
+        alert('Ошибка сети: ' + error);
         setSurveyCompleted(true);
       } finally {
         setIsSending(false);
