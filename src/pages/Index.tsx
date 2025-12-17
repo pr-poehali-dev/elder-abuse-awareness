@@ -19,26 +19,51 @@ const Index = () => {
     {
       icon: 'UserX',
       title: 'Физическое насилие',
-      description: 'Синяки, ссадины, переломы, необъяснимые травмы',
+      description: 'Побои, толчки, шлепки, удушение, ограничение движений',
+      consequences: 'Травмы, переломы, хронические боли, инвалидность, летальный исход',
       color: 'bg-red-50 border-red-200'
     },
     {
       icon: 'Brain',
       title: 'Психологическое насилие',
-      description: 'Запугивание, угрозы, изоляция, унижение',
+      description: 'Запугивание, угрозы, изоляция, контроль, манипуляции',
+      consequences: 'Депрессия, тревожность, потеря самооценки, суицидальные мысли, ПТСР',
       color: 'bg-purple-50 border-purple-200'
     },
     {
-      icon: 'Wallet',
-      title: 'Финансовая эксплуатация',
-      description: 'Незаконное использование средств, вымогательство',
-      color: 'bg-yellow-50 border-yellow-200'
+      icon: 'MessageSquare',
+      title: 'Вербальное насилие',
+      description: 'Оскорбления, крики, унижения, постоянная критика',
+      consequences: 'Низкая самооценка, страх общения, социальная изоляция, эмоциональная травма',
+      color: 'bg-orange-50 border-orange-200'
+    },
+    {
+      icon: 'HeartCrack',
+      title: 'Моральное насилие',
+      description: 'Игнорирование, обесценивание чувств, газлайтинг, пренебрежение потребностями',
+      consequences: 'Потеря самоидентификации, эмоциональное выгорание, зависимость от агрессора',
+      color: 'bg-indigo-50 border-indigo-200'
     },
     {
       icon: 'HeartOff',
-      title: 'Пренебрежение',
-      description: 'Отсутствие ухода, питания, медицинской помощи',
-      color: 'bg-blue-50 border-blue-200'
+      title: 'Эмоциональное насилие',
+      description: 'Постоянная критика, игнорирование, холодность, эмоциональный шантаж',
+      consequences: 'Тревожные расстройства, депрессия, нарушение привязанности, потеря доверия',
+      color: 'bg-pink-50 border-pink-200'
+    },
+    {
+      icon: 'Wallet',
+      title: 'Экономическое насилие',
+      description: 'Контроль финансов, запрет работать, незаконное использование средств, вымогательство',
+      consequences: 'Финансовая зависимость, бедность, невозможность уйти, потеря имущества',
+      color: 'bg-yellow-50 border-yellow-200'
+    },
+    {
+      icon: 'ShieldAlert',
+      title: 'Сексуальное насилие',
+      description: 'Принуждение к интимным отношениям, домогательства, насильственные действия',
+      consequences: 'Физические травмы, ПТСР, сексуальные расстройства, инфекции, психологическая травма',
+      color: 'bg-rose-50 border-rose-200'
     }
   ];
 
@@ -261,10 +286,13 @@ const Index = () => {
                     <div className="p-3 bg-white rounded-lg shadow-sm">
                       <Icon name={sign.icon} size={32} className="text-primary" />
                     </div>
-                    <div>
+                    <div className="flex-1">
                       <CardTitle className="text-2xl mb-2">{sign.title}</CardTitle>
-                      <CardDescription className="text-lg text-foreground/80">
-                        {sign.description}
+                      <CardDescription className="text-base text-foreground/80 mb-3">
+                        <strong>Признаки:</strong> {sign.description}
+                      </CardDescription>
+                      <CardDescription className="text-base text-foreground/70">
+                        <strong>Последствия:</strong> {sign.consequences}
                       </CardDescription>
                     </div>
                   </div>
