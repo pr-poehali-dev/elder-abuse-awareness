@@ -386,7 +386,7 @@ const Index = () => {
       <footer className="bg-muted/50 py-8 mt-20">
         <div className="container mx-auto px-4 text-center">
           <p className="text-lg text-muted-foreground">
-            © 2024 Защита достоинства. Каждый имеет право на уважение и безопасность.
+            © 2025 Защита достоинства. Каждый имеет право на уважение и безопасность.
           </p>
         </div>
       </footer>
