@@ -361,6 +361,17 @@ const Index = () => {
             </p>
           </div>
           <Survey />
+          <div className="mt-6 text-center">
+            <a 
+              href="https://docs.google.com/forms/d/18Yv6DD5nbJ8o9f4AY2Z6ep8Lq1FqCw4sQcoWNSqWRE0/edit?pli=1#responses" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-primary hover:underline text-lg font-medium inline-flex items-center gap-2"
+            >
+              <Icon name="ExternalLink" size={20} />
+              Посмотреть результаты анкеты
+            </a>
+          </div>
         </section>
 
         <section id="contact" className="text-center max-w-3xl mx-auto space-y-8 py-12">
