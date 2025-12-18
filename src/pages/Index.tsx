@@ -152,7 +152,14 @@ const Index = () => {
               <Icon name="LifeBuoy" className="mr-2" size={18} />
               Помощь
             </Button>
-
+            <Button 
+              variant="ghost" 
+              onClick={() => scrollToSection('prevention')}
+              className="text-base"
+            >
+              <Icon name="ShieldCheck" className="mr-2" size={18} />
+              Предотвращение
+            </Button>
             <Button 
               variant="ghost" 
               onClick={() => scrollToSection('stories')}
@@ -294,7 +301,107 @@ const Index = () => {
           </div>
         </section>
 
+        <section id="prevention" className="space-y-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Меры предотвращения</h2>
+            <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
+              Что можно сделать, чтобы защитить пожилых людей
+            </p>
+          </div>
+          <div className="max-w-5xl mx-auto">
+            <Accordion type="single" collapsible className="space-y-4">
+              <AccordionItem value="education" className="border-2 rounded-lg px-6 bg-blue-50 border-blue-200">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Icon name="GraduationCap" size={28} className="text-primary" />
+                    Образование и просвещение
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-lg pt-4 space-y-2">
+                  <p>• Проведение информационных кампаний о правах пожилых людей</p>
+                  <p>• Обучение родственников и опекунов основам ухода</p>
+                  <p>• Повышение осведомленности общества о проблеме</p>
+                  <p>• Семинары и тренинги для социальных работников</p>
+                </AccordionContent>
+              </AccordionItem>
 
+              <AccordionItem value="support" className="border-2 rounded-lg px-6 bg-green-50 border-green-200">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Icon name="HandHeart" size={28} className="text-primary" />
+                    Социальная поддержка
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-lg pt-4 space-y-2">
+                  <p>• Создание групп поддержки для пожилых людей</p>
+                  <p>• Развитие служб социального обслуживания</p>
+                  <p>• Организация досуга и общения для пожилых</p>
+                  <p>• Помощь опекунам для снижения стресса</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="legal" className="border-2 rounded-lg px-6 bg-purple-50 border-purple-200">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Icon name="Scale" size={28} className="text-primary" />
+                    Правовая защита
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-lg pt-4 space-y-2">
+                  <p>• Усиление законодательства по защите прав пожилых</p>
+                  <p>• Упрощение доступа к юридической помощи</p>
+                  <p>• Контроль за деятельностью домов престарелых</p>
+                  <p>• Создание механизмов быстрого реагирования</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="medical" className="border-2 rounded-lg px-6 bg-rose-50 border-rose-200">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Icon name="Stethoscope" size={28} className="text-primary" />
+                    Медицинская помощь
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-lg pt-4 space-y-2">
+                  <p>• Регулярные медицинские осмотры</p>
+                  <p>• Обучение врачей выявлению признаков насилия</p>
+                  <p>• Психологическая помощь пострадавшим</p>
+                  <p>• Программы поддержки ментального здоровья</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="monitoring" className="border-2 rounded-lg px-6 bg-amber-50 border-amber-200">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Icon name="Eye" size={28} className="text-primary" />
+                    Мониторинг и контроль
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-lg pt-4 space-y-2">
+                  <p>• Регулярные проверки условий проживания</p>
+                  <p>• Создание горячих линий для сообщений о насилии</p>
+                  <p>• Система визитов социальных работников</p>
+                  <p>• Контроль за финансовыми операциями уязвимых лиц</p>
+                </AccordionContent>
+              </AccordionItem>
+
+              <AccordionItem value="community" className="border-2 rounded-lg px-6 bg-teal-50 border-teal-200">
+                <AccordionTrigger className="text-xl font-semibold hover:no-underline">
+                  <div className="flex items-center gap-3">
+                    <Icon name="Users" size={28} className="text-primary" />
+                    Вовлечение общества
+                  </div>
+                </AccordionTrigger>
+                <AccordionContent className="text-lg pt-4 space-y-2">
+                  <p>• Программы добровольной помощи пожилым соседям</p>
+                  <p>• Создание дружественной среды для пожилых людей</p>
+                  <p>• Межпоколенческие проекты и мероприятия</p>
+                  <p>• Поощрение активного участия пожилых в жизни общества</p>
+                </AccordionContent>
+              </AccordionItem>
+            </Accordion>
+          </div>
+        </section>
 
         <section id="stories" className="space-y-8">
           <div className="text-center mb-12">
